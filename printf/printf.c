@@ -9,15 +9,22 @@ char *chardup(const char ch){
   return buff;
 }
 
-unsigned int strlen(const char *str){
+unsigned int my_strlen(const char *str){
   unsigned int count;
-  char *p;
+  const char *p;
   for(p=str,count=0;*p;p++,count++);
   return count;
 } 
 
 int puts(const  char *str){
-  unsigned len = strlen( str);
+  unsigned len = my_strlen( str);
   if(len<0)return -1;
   return write(1,str,len);
+}
+
+int main(){
+// puts("Hello\n");
+  char * ptr = chardup('H');
+  puts(ptr);
+  return 0;
 }
