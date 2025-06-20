@@ -1,4 +1,7 @@
 #include <unistd.h>
+#include <stdarg.h>
+
+#define my_putchar(x) write(1,chardup(x),1)
 
 char *chardup(const char ch){
   static char buff[2];
@@ -22,9 +25,28 @@ int puts(const  char *str){
   return write(1,str,len);
 }
 
+
+int my_printf(const char *str, ...){
+  va_list args;
+  va_start(args,str);
+  while(*str){
+    if(*str=='%' && *(str+1)=='s'){
+      str+=2;
+      char* s = va_arg(args,char *);
+      puts(s);
+    }
+    else{
+      my_putchar(*str++);
+    }
+  }
+  va_end(args);
+  return 0;
+}
+
+
+
 int main(){
-// puts("Hello\n");
-  char * ptr = chardup('H');
-  puts(ptr);
+  char * s = "somehow";
+  my_printf("This %s works  \n",s);
   return 0;
 }
