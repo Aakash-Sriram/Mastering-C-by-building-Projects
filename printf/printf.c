@@ -3,6 +3,10 @@
 
 #define my_putchar(x) write(1,chardup(x),1)
 
+#define Wait4Char 1
+#define Wait4Fmt  2
+
+typedef unsigned char State;
 char *chardup(const char ch){
   static char buff[2];
   char* p;
@@ -29,15 +33,30 @@ int puts(const  char *str){
 int my_printf(const char *str, ...){
   va_list args;
   va_start(args,str);
+  State state = Wait4Char;
   while(*str){
-    if(*str=='%' && *(str+1)=='s'){
-      str+=2;
-      char* s = va_arg(args,char *);
-      puts(s);
+    if(state & Wait4Char){
+      switch(*str){
+        case '%':
+          state = Wait4Fmt;
+          break;
+        default:
+          my_putchar(*str);
+          break;
+      }
     }
-    else{
-      my_putchar(*str++);
+    else if(state & Wait4Fmt){
+      switch(*str){
+        case '%':
+          my_putchar(*str);
+          state = Wait4Char;
+          break;
+        default:
+          state= Wait4Char;
+          break;
+      }
     }
+    str++;
   }
   va_end(args);
   return 0;
@@ -46,7 +65,7 @@ int my_printf(const char *str, ...){
 
 
 int main(){
-  char * s = "somehow";
-  my_printf("This %s works  \n",s);
+
+  my_printf("This  works ?\n" );
   return 0;
 }
