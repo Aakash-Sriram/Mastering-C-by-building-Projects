@@ -24,7 +24,7 @@ unsigned int my_strlen(const char *str){
 } 
 
 int puts(const  char *str){
-  unsigned len = my_strlen( str);
+  unsigned int len = my_strlen( str);
   if(len<0)return -1;
   return write(1,str,len);
 }
@@ -39,6 +39,11 @@ int my_printf(const char *str, ...){
       switch(*str){
         case '%':
           state = Wait4Fmt;
+          break;
+        case 10:
+        case 13:
+          if( (*(str +1) ==10)|| (*(str+1)==13) )str++;
+          my_putchar(10);
           break;
         default:
           my_putchar(*str);
@@ -66,6 +71,6 @@ int my_printf(const char *str, ...){
 
 int main(){
 
-  my_printf("This  works ?\n" );
+  my_printf("This %% works ?\r\n" );
   return 0;
 }

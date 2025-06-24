@@ -1,0 +1,90 @@
+execve("./printf", ["./printf"], 0x7fffbd8b63f8 /* 84 vars */execve("./printf", ["./printf"], 0x7fffbd8b63f8 /* 84 vars */) = 0
+) = 0
+brk(NULLbrk(NULL)                               = 0x555cbf780000
+)                               = 0x555cbf780000
+access("/etc/ld.so.preload", R_OKaccess("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXECopenat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+) = 3
+fstat(3, fstat(3, {st_mode=S_IFREG|0644, st_size=178867, ...}) = 0
+{st_mode=S_IFREG|0644, st_size=178867, ...}) = 0
+mmap(NULL, 178867, PROT_READ, MAP_PRIVATE, 3, 0mmap(NULL, 178867, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fc8caefa000
+) = 0x7fc8caefa000
+close(3close(3)                                = 0
+)                                = 0
+openat(AT_FDCWD, "/usr/lib/libc.so.6", O_RDONLY|O_CLOEXECopenat(AT_FDCWD, "/usr/lib/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+) = 3
+read(3, read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0px\2\0\0\0\0\0"..., 832) = 832
+"\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0px\2\0\0\0\0\0"..., 832) = 832
+pread64(3, pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 840, 64) = 840
+"\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 840, 64) = 840
+fstat(3, fstat(3, {st_mode=S_IFREG|0755, st_size=2006328, ...}) = 0
+{st_mode=S_IFREG|0755, st_size=2006328, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fc8caef8000
+) = 0x7fc8caef8000
+pread64(3, pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 840, 64) = 840
+"\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 840, 64) = 840
+mmap(NULL, 2030680, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0mmap(NULL, 2030680, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fc8cad08000
+) = 0x7fc8cad08000
+mmap(0x7fc8cad2c000, 1507328, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x24000mmap(0x7fc8cad2c000, 1507328, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x24000) = 0x7fc8cad2c000
+) = 0x7fc8cad2c000
+mmap(0x7fc8cae9c000, 319488, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x194000mmap(0x7fc8cae9c000, 319488, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x194000) = 0x7fc8cae9c000
+) = 0x7fc8cae9c000
+mmap(0x7fc8caeea000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e1000mmap(0x7fc8caeea000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e1000) = 0x7fc8caeea000
+) = 0x7fc8caeea000
+mmap(0x7fc8caef0000, 31832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0mmap(0x7fc8caef0000, 31832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fc8caef0000
+) = 0x7fc8caef0000
+close(3close(3)                                = 0
+)                                = 0
+mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fc8cad05000
+) = 0x7fc8cad05000
+arch_prctl(ARCH_SET_FS, 0x7fc8cad05740arch_prctl(ARCH_SET_FS, 0x7fc8cad05740) = 0
+) = 0
+set_tid_address(0x7fc8cad05a10set_tid_address(0x7fc8cad05a10)         = 39365
+)         = 39365
+set_robust_list(0x7fc8cad05a20, 24set_robust_list(0x7fc8cad05a20, 24)     = 0
+)     = 0
+rseq(0x7fc8cad05680, 0x20, 0, 0x53053053rseq(0x7fc8cad05680, 0x20, 0, 0x53053053) = 0
+) = 0
+mprotect(0x7fc8caeea000, 16384, PROT_READmprotect(0x7fc8caeea000, 16384, PROT_READ) = 0
+) = 0
+mprotect(0x555c97d11000, 4096, PROT_READmprotect(0x555c97d11000, 4096, PROT_READ) = 0
+) = 0
+mprotect(0x7fc8caf63000, 8192, PROT_READmprotect(0x7fc8caf63000, 8192, PROT_READ) = 0
+) = 0
+prlimit64(0, RLIMIT_STACK, NULL, prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+{rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+munmap(0x7fc8caefa000, 178867munmap(0x7fc8caefa000, 178867)          = 0
+)          = 0
+write(1, "T", 1write(1, "T", 1)                        = 1
+)                        = 1
+write(1, "h", 1write(1, "h", 1)                        = 1
+)                        = 1
+write(1, "i", 1write(1, "i", 1)                        = 1
+)                        = 1
+write(1, "s", 1write(1, "s", 1)                        = 1
+)                        = 1
+write(1, " ", 1write(1, " ", 1)                        = 1
+)                        = 1
+write(1, " ", 1write(1, " ", 1)                        = 1
+)                        = 1
+write(1, "w", 1write(1, "w", 1)                        = 1
+)                        = 1
+write(1, "o", 1write(1, "o", 1)                        = 1
+)                        = 1
+write(1, "r", 1write(1, "r", 1)                        = 1
+)                        = 1
+write(1, "k", 1write(1, "k", 1)                        = 1
+)                        = 1
+write(1, "s", 1write(1, "s", 1)                        = 1
+)                        = 1
+write(1, " ", 1write(1, " ", 1)                        = 1
+)                        = 1
+write(1, "?", 1write(1, "?", 1)                        = 1
+)                        = 1
+write(1, "\n", 1write(1, "\n", 1)                       = 1
+)                       = 1
+exit_group(0exit_group(0)                           = ?
+)                           = ?
++++ exited with 0 +++
++++ exited with 0 +++
