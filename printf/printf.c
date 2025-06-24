@@ -1,20 +1,5 @@
-#include <unistd.h>
-#include <stdarg.h>
-
-#define my_putchar(x) write(1,chardup(x),1)
-
-#define Wait4Char 1
-#define Wait4Fmt  2
-
-typedef unsigned char State;
-char *chardup(const char ch){
-  static char buff[2];
-  char* p;
-  p=buff;
-  *p++=ch;
-  *p--=0;
-  return buff;
-}
+#include "helper.h"
+#include "printf.h"
 void itoa(int value , char* buffer , int base, bool Cap){
   int index = 0;
   char str[1024];
@@ -37,19 +22,6 @@ void itoa(int value , char* buffer , int base, bool Cap){
   buffer[index]='\0';
   
 }
-unsigned int my_strlen(const char *str){
-  unsigned int count;
-  const char *p;
-  for(p=str,count=0;*p;p++,count++);
-  return count;
-} 
-
-int puts(const  char *str){
-  unsigned int len = my_strlen( str);
-  if(len<0)return -1;
-  return write(1,str,len);
-}
-
 
 int my_printf(const char *str, ...){
   va_list args;
@@ -109,13 +81,3 @@ int my_printf(const char *str, ...){
 
 
 
-int main(){
-//  char *str = "Hello,World ! \r\n";
-//  char *bye = "\nBye";
-//  char c= 66;
-//  int n = 01;
-//  my_printf("%sThis %x works?%s\r\n" , str , n , bye);
-//  my_printf("\n\n%c",c);
-  my_printf("\n%d\r\n",10);
-  return 0;
-}
