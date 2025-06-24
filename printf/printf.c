@@ -15,7 +15,28 @@ char *chardup(const char ch){
   *p--=0;
   return buff;
 }
+void itoa(int value , char* buffer , int base, bool Cap){
+  int index = 0;
+  char str[1024];
+  if(value==0){
+    str[index++]='0';
+    str[index]='\0';
+  }
 
+  char cap;
+  while(value>0){
+        if(Cap)cap ='A';else cap ='a';
+        str[index++] = (base<=10)?'0'+ (value%base):(value%base) - 10 + cap;
+        value/=base;
+  }
+  str[index]='\0';
+
+  for(int i=0;i<index;i++){
+        buffer[i]=str[index-i-1]; 
+  }
+  buffer[index]='\0';
+  
+}
 unsigned int my_strlen(const char *str){
   unsigned int count;
   const char *p;
@@ -64,6 +85,15 @@ int my_printf(const char *str, ...){
           my_putchar((char)va_arg(args,int));
           state = Wait4Char;
           break;
+        case 'd':
+          char buffer[2048];
+          itoa( va_arg(args,int) , buffer , 10 ,false);
+          int ind=0;
+          while(buffer[ind]){
+            my_putchar(buffer[ind++]);
+          }
+          state =Wait4Char;
+          break;
         default:
           state= Wait4Char;
           (void)va_arg(args,char*);
@@ -80,11 +110,12 @@ int my_printf(const char *str, ...){
 
 
 int main(){
-  char *str = "Hello,World ! \r\n";
-  char *bye = "\nBye";
-  char c= 66;
-  int n = 01;
-  my_printf("%sThis %x works?%s\r\n" , str , n , bye);
-  my_printf("\n\n%c",c);
+//  char *str = "Hello,World ! \r\n";
+//  char *bye = "\nBye";
+//  char c= 66;
+//  int n = 01;
+//  my_printf("%sThis %x works?%s\r\n" , str , n , bye);
+//  my_printf("\n\n%c",c);
+  my_printf("\n%d\r\n",10);
   return 0;
 }
