@@ -10,10 +10,11 @@
 
 #define Wait4Fmt  2
 
-#endif
 
 typedef unsigned char State;
 
 unsigned int my_strlen(const char *str);
 int puts(const  char *str);
 char *chardup(const char ch);
+
+#endif

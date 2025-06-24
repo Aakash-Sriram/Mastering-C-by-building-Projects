@@ -1,6 +1,6 @@
 #include "helper.h"
 #include "printf.h"
-void itoa(int value , char* buffer , int base, bool Cap){
+void itoa(int value , char* buffer , int base, int Cap){
   int index = 0;
   char str[1024];
   if(value==0){
@@ -59,7 +59,7 @@ int my_printf(const char *str, ...){
           break;
         case 'd':
           char buffer[2048];
-          itoa( va_arg(args,int) , buffer , 10 ,false);
+          itoa( va_arg(args,int) , buffer , 10 ,1);
           int ind=0;
           while(buffer[ind]){
             my_putchar(buffer[ind++]);
