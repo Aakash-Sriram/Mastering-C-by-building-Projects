@@ -60,6 +60,10 @@ int my_printf(const char *str, ...){
           puts(va_arg(args,  char*));
           state = Wait4Char;
           break;
+        case 'c':
+          my_putchar((char)va_arg(args,int));
+          state = Wait4Char;
+          break;
         default:
           state= Wait4Char;
           (void)va_arg(args,char*);
@@ -78,7 +82,9 @@ int my_printf(const char *str, ...){
 int main(){
   char *str = "Hello,World ! \r\n";
   char *bye = "\nBye";
-  int n = 10;
+  char c= 66;
+  int n = 01;
   my_printf("%sThis %x works?%s\r\n" , str , n , bye);
+  my_printf("\n\n%c",c);
   return 0;
 }
