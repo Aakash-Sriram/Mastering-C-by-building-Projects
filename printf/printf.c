@@ -4,16 +4,24 @@ void itoa(int value , char* buffer , int base, int Cap){
   int index = 0;
   char str[1024];
   if(value==0){
-    str[index++]='0';
-    str[index]='\0';
+    buffer[index++]='0';
+    buffer[index]='\0';
   }
-
+  int isNeg =0;
+  if(value<0 && base==10){
+    value = -value;
+    isNeg =1;  
+  }
   char cap;
   while(value>0){
+        int digit = value%base;
         if(Cap)cap ='A';else cap ='a';
-        str[index++] = ( (value%base)<10 )?'0'+ (value%base): ( (value%base) - 10 )+ cap;
+        str[index++] = ( digit<10 )? '0'+ digit: ( digit - 10 )+ cap;
         value/=base;
   }
+
+  if(isNeg)str[index++]='-';
+
   str[index]='\0';
 
   for(int i=0;i<index;i++){
@@ -22,7 +30,32 @@ void itoa(int value , char* buffer , int base, int Cap){
   buffer[index]='\0';
   
 }
+void ftoa(float value , char* buffer , char prec){
+  int index=my_strlen(buffer);
+  int integer = (int)value;
+  float floAT = value - integer;
+  floAT = (floAT<0)?-floAT:floAT;
+  itoa(integer,buffer,10,0);
+  index=my_strlen(buffer);
+  buffer[index++]='.';
+  int max_limit = prec - '0';
+  max_limit =(max_limit>8)?8:max_limit;
+  for(int i=0;i<max_limit;i++){
+    floAT*=10;
+    int digit = (int)floAT ;
+    buffer[index++]='0'+digit;
+    floAT-=digit;
 
+    if(floAT < 1e-10 && floAT > -1e-10)break;
+    /* 
+     * floAT may or may not reach 0 
+     * or if it somehow reaches negative value due to float precision it might lead to a infinite loop 
+     * so break the loop when its close enough
+     * 
+     */
+  }
+  buffer[index]='\0';
+}
 int my_printf(const char *str, ...){
   va_list args;
   va_start(args,str);
@@ -85,7 +118,14 @@ int my_printf(const char *str, ...){
           }
           state =Wait4Char;
           break;
-
+        case 'f':
+          ind =0;
+          ftoa( va_arg(args,double),buffer,'4');
+          while(buffer[ind]){
+            my_putchar(buffer[ind++]);
+          }
+          state = Wait4Char;
+          break;
         default:
           state= Wait4Char;
           (void)va_arg(args,char*);
