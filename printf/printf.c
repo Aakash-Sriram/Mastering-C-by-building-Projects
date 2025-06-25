@@ -11,7 +11,7 @@ void itoa(int value , char* buffer , int base, int Cap){
   char cap;
   while(value>0){
         if(Cap)cap ='A';else cap ='a';
-        str[index++] = (base<=10)?'0'+ (value%base):(value%base) - 10 + cap;
+        str[index++] = ( (value%base)<10 )?'0'+ (value%base): ( (value%base) - 10 )+ cap;
         value/=base;
   }
   str[index]='\0';
@@ -34,6 +34,8 @@ int my_printf(const char *str, ...){
           state = Wait4Fmt;
           break;
         case 10:
+          if(*str==10)my_putchar(10);
+          break;
         case 13:
           if( (*(str +1) ==10)|| (*(str+1)==13) )str++;
           my_putchar(10);
@@ -44,6 +46,8 @@ int my_printf(const char *str, ...){
       }
     }
     else if(state & Wait4Fmt){
+      char buffer[2048];
+      int ind =0;
       switch(*str){
         case '%':
           my_putchar(*str);
@@ -58,14 +62,30 @@ int my_printf(const char *str, ...){
           state = Wait4Char;
           break;
         case 'd':
-          char buffer[2048];
+          ind =0;
           itoa( va_arg(args,int) , buffer , 10 ,1);
-          int ind=0;
           while(buffer[ind]){
             my_putchar(buffer[ind++]);
           }
           state =Wait4Char;
           break;
+        case 'x':
+          ind = 0;
+          itoa( va_arg(args,int) , buffer , 16 ,0);
+          while(buffer[ind]){
+            my_putchar(buffer[ind++]);
+          }
+          state =Wait4Char;
+          break;
+        case 'X':
+          ind = 0;
+          itoa( va_arg(args,int) , buffer , 16 ,0);
+          while(buffer[ind]){
+            my_putchar(buffer[ind++]);
+          }
+          state =Wait4Char;
+          break;
+
         default:
           state= Wait4Char;
           (void)va_arg(args,char*);
