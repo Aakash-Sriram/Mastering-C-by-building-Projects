@@ -94,6 +94,15 @@ int my_printf(const char *str, ...){
           my_putchar((char)va_arg(args,int));
           state = Wait4Char;
           break;
+        case 'o':
+          ind =0;
+          itoa( va_arg(args,int) , buffer , 8 ,1);
+          while(buffer[ind]){
+            my_putchar(buffer[ind++]);
+          }
+          state =Wait4Char;
+          break;
+
         case 'd':
           ind =0;
           itoa( va_arg(args,int) , buffer , 10 ,1);

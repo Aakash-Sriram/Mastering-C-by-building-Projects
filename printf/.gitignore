@@ -1,0 +1,29 @@
+# Object files
+*.o
+
+# Precompiled headers
+*.gch
+
+# Dependency files
+*.d
+
+# Static libraries
+*.a
+*.lib
+
+# Dynamic/shared libraries
+*.so
+*.dll
+*.dylib
+
+# Executables (Linux/macOS/Windows)
+*.out
+*.exe
+*.app
+
+# Build files and debug symbols (optional but common)
+*.swp
+*.bak
+*.tmp
+*.stackdump
+
